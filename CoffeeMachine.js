@@ -5,12 +5,12 @@
 let startUtilities = [400, 0, 120, 9, 550];
 let utilityNames = ["water", "milk", "beans", "disposable cups"];
 
-const input = require('sync-input');
+const input = require('readline-sync');
 
 start();
 
 function start() {
-  let action = input("\nWrite action (buy, fill, take, remaining, exit):\n");
+  let action = input.question("\nWrite action (buy, fill, take, remaining, exit):\n");
 
   if (action === "buy") {
     buy();
@@ -73,7 +73,7 @@ function buy() {
   //display of the menu and input request to the user
   console.log(`\nOur menu consists of: \n${allBeverageNames[0]}, ${allBeverageNames[1]} and ${allBeverageNames[2]} \n${inputMessage} ${beveragesOnOffer}`
       + "\nFor the other beverages, input the number to find out what utility is missing. To go back, input 'back'");
-  let userCoffeeChoice = input("Your input:\n");
+  let userCoffeeChoice = input.question("Your input:\n");
 
   if (userCoffeeChoice == 1) {
     if(startUtilities.at(0) >= espresso.at(0) &&
@@ -147,13 +147,13 @@ function buy() {
 function fill() {
   let fillUpValues = new Array(5);
 
-  fillUpValues.fill(parseInt(input("Write how many ml of water you want to add:\n")),0,1);
+  fillUpValues.fill(parseInt(input.question("Write how many ml of water you want to add:\n")),0,1);
 
-  fillUpValues.fill(parseInt(input("Write how many ml of milk you want to add:\n")), 1, 2);
+  fillUpValues.fill(parseInt(input.question("Write how many ml of milk you want to add:\n")), 1, 2);
 
-  fillUpValues.fill(parseInt(input("Write how many grams of coffee beans you want to add:\n")),2,3);
+  fillUpValues.fill(parseInt(input.question("Write how many grams of coffee beans you want to add:\n")),2,3);
 
-  fillUpValues.fill(parseInt(input("Write how many disposable coffee cups you want to add:\n")),3,4);
+  fillUpValues.fill(parseInt(input.question("Write how many disposable coffee cups you want to add:\n")),3,4);
 
   fillUpValues.fill(0,4);
 
